@@ -40,7 +40,7 @@ T clamp(T const & v, T const & hi, T const & lo) {
 void merge_vertex_projection_infos(std::vector<std::vector<VertexProjectionInfo> > * vertex_projection_infos) {
     /* Merge vertex infos within the same texture patch. */
     #pragma omp parallel for
-    for (std::size_t i = 0; i < vertex_projection_infos->size(); ++i) {
+    for (std::int64_t i = 0; i < vertex_projection_infos->size(); ++i) {
         std::vector<VertexProjectionInfo> & infos = vertex_projection_infos->at(i);
 
         std::map<std::size_t, VertexProjectionInfo> info_map;
@@ -468,7 +468,7 @@ generate_texture_patches(UniGraph const & graph, mve::TriangleMesh::ConstPtr mes
 
     std::cout << "\tRunning... " << std::flush;
     #pragma omp parallel for schedule(dynamic)
-    for (std::size_t i = 0; i < texture_views->size(); ++i) {
+    for (std::int64_t i = 0; i < texture_views->size(); ++i) {
 
         std::vector<std::vector<std::size_t> > subgraphs;
         int const label = i + 1;
@@ -544,7 +544,7 @@ generate_texture_patches(UniGraph const & graph, mve::TriangleMesh::ConstPtr mes
         graph.get_subgraphs(0, &subgraphs);
 
         #pragma omp parallel for schedule(dynamic)
-        for (std::size_t i = 0; i < subgraphs.size(); ++i) {
+        for (std::int64_t i = 0; i < subgraphs.size(); ++i) {
             std::vector<std::size_t> const & subgraph = subgraphs[i];
 
             bool success = false;
