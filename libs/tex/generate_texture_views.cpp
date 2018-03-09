@@ -188,7 +188,7 @@ from_nvm_scene(std::string const & nvm_file, std::vector<TextureView> * texture_
     }
 
     ProgressCounter view_counter("\tLoading", cameras.size());
-    #pragma omp parallel for
+ //   #pragma omp parallel for
     for (std::int64_t i = 0; i < cameras.size(); ++i) {
         view_counter.progress<SIMPLE>();
         mve::CameraInfo& mve_cam = cameras[i];
