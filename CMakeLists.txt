@@ -10,6 +10,9 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE RELWITHDEBINFO)
 endif()
 
+find_library(MVE_LIB REQUIRED)
+find_library(MVE_UTIL_LIB REQUIRED)
+
 #Search for TBB library (release build)
 set(CMAKE_BUILD_TYPE_BACKUP ${CMAKE_BUILD_TYPE})
 set(CMAKE_BUILD_TYPE RELEASE)
@@ -48,6 +51,8 @@ include_directories(SYSTEM
 include_directories(
     libs
 )
+
+include_directories(${TBB_INCLUDE_DIRS})
 
 link_directories(
     ${CMAKE_SOURCE_DIR}/elibs/mve/libs/mve
